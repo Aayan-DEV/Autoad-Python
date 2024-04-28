@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+    <h1>The front page</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="input_text" placeholder="Enter bot token here">
+        <button type="submit">Start Bot</button>
+    </form>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
